@@ -4,8 +4,10 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class TestEuro {
+
+    // Test per il constructor di Euro, con solo euro, euro e cent, zero e euro negativi
     @Test
-    public void testEuroInt() {
+    public void testEuroOnlyEuro() {
         Euro euro = new Euro(10);
         assertEquals(1000, euro.getValore());
     }
@@ -23,7 +25,7 @@ public class TestEuro {
     }
 
     @Test
-    public void testEuroNegativeInt() {
+    public void testEuroNegativeOnlyEuro() {
         Euro euro = new Euro(-10);
         assertEquals(-1000, euro.getValore());
     }
@@ -34,11 +36,27 @@ public class TestEuro {
         assertEquals(-1010, euro.getValore());
     }
 
+    // Test per convertire double a Euro positivo, negativo e zero
+
     @Test
     public void testEuroDouble() {
         Euro euro = new Euro(10.10);
         assertEquals(1010, euro.getValore());
     }
+
+    @Test
+    public void testEuroDoubleNegative() {
+        Euro euro = new Euro(-10.10);
+        assertEquals(-1010, euro.getValore());
+    }
+
+    @Test
+    public void testEuroDoubleZero() {
+        Euro euro = new Euro(0.0);
+        assertEquals(0, euro.getValore());
+    }
+
+    // Test per la somma di Euro
 
     @Test
     public void testEuroSomma() {
@@ -48,6 +66,8 @@ public class TestEuro {
         assertEquals(2020, euro.getValore());
     }
 
+    // Test per la sottrazione di Euro
+
     @Test
     public void testEuroSottrai() {
         Euro euro = new Euro(10, 10);
@@ -55,6 +75,8 @@ public class TestEuro {
         euro.sottrai(euro2);
         assertEquals(0, euro.getValore());
     }
+
+    // Test per l'uguaglianza/disuguaglianza di due oggetti Euro
 
     @Test
     public void testEuroUgualeA() {
@@ -70,6 +92,8 @@ public class TestEuro {
         assertFalse(euro.ugualeA(euro2));
     }
 
+    // Test per valutare se un oggetto Euro sia minore/non minore di un altro
+
     @Test
     public void testEuroMinoreDi() {
         Euro euro = new Euro(10, 10);
@@ -84,6 +108,8 @@ public class TestEuro {
         assertFalse(euro.minoreDi(euro2));
     }
     
+    // Test per la stampa di un oggetto Euro positivo, negativo e zero
+
     @Test
     public void testEuroStampa() {
         Euro euro = new Euro(10, 10);
